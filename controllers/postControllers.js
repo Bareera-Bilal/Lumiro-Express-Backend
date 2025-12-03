@@ -103,6 +103,32 @@ exports.likePost = async (req, res) => {
 
 
 
+// REPORT POST
+
+exports.reportPost = async (req, res) => {
+  try {
+    const { postId, reportText } = req.body;
+
+    const post = await Post.findById(postId);
+    if (!post) return res.status(404).json({ message: "Post not found" });
+
+    post.isReported = true;
+    post.reportReason = reportText;
+
+    await post.save();
+
+    res.json({ success: true });
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// REPORT POST
+
+
+
+
 // REPLY THE COMMENT
 
   exports.replyOnComment = async (req, res) => {
