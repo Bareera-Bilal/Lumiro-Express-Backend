@@ -1,6 +1,16 @@
+# services:
+#   - type: web
+#     name: game-backend
+#     env: dotnet
+#     buildCommand: "dotnet publish -c Release -o out"
+#     startCommand: "dotnet out/P10_WebApi.dll"
+
+
 services:
   - type: web
-    name: game-backend
-    env: dotnet
-    buildCommand: "dotnet publish -c Release -o out"
-    startCommand: "dotnet out/P10_WebApi.dll"
+    name: p10-webapi
+    env: docker
+    plan: free
+    autoDeploy: true
+    branch: main
+    healthCheckPath: /
