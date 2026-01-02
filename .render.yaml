@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: game-backend
+    env: dotnet
+    buildCommand: "dotnet publish -c Release -o out"
+    startCommand: "dotnet out/P10_WebApi.dll"
